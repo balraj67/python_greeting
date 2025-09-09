@@ -1,0 +1,26 @@
+name: Python Tests
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  greet:
+    runs-on: ubuntu-latest
+
+    env:
+      PYTHON_VERSION: '3.x'
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+
+      - name: Run greeting script
+        run: |
+          echo "Running greeting script..."
+          python script.py "John Doe"
